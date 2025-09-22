@@ -4,6 +4,7 @@ import navImg from './assets/logo.png'
 import coin from './assets/download-removebg-preview.png'
 function App() {
  
+ 
 
   return (
     <>
