@@ -6,15 +6,16 @@ const AvailablePlayers = ({playerPromise}) => {
     const playerData = use(playerPromise)
     console.log(playerData);
     return (
-        <div className='max-w-[1200px] mx-auto'>
+        <div className='max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-3'>
 
             {
                 playerData.map( player =>
-                    <div className="card bg-base-100 w-96 shadow-sm p-3">
+                    <div className="card bg-base-100  shadow-sm p-3 ">
                 <figure>
-    <img
-      src={player.player_img}
-      alt="Shoes" />
+                    <img
+                    src={player.player_img}
+                    alt="Shoes" 
+                    className='w-[full] h-[250px] object-cover'/>
                 </figure>
                 <div className="mt-4">
                     <div className='flex'>
@@ -24,23 +25,23 @@ const AvailablePlayers = ({playerPromise}) => {
                     <div className='flex justify-between mt-4 border-b-1 border-gray-200 pb-2 '> 
                        <div className='flex items-center'>
                          <img className='w-[20px] h-[20px]' src={flagImg} alt="" />
-                         <span className='ml-2'>India</span>
+                         <span className='ml-2'>{player.player_country}</span>
                        </div>
-                       <button className='btn'>All rounder</button>
+                       <button className='btn'>{player.player_role}</button>
                     </div>
 
                     <div className='flex justify-between font-bold'>
-                        <span>Rating</span>
+                        <span>{player.rating}</span>
                         <span>5</span>
                     </div>
 
                     <div className='flex justify-between '>
-                        <span className='font-bold'>Left hand bat</span>
-                        <span>Right hand bowl</span>
+                        <span className='font-bold'>{player.batting_style}</span>
+                        <span>{player.bowling_style}</span>
                     </div>
                     
                     <div className="card-actions flex justify-between mt-3 items-center">
-                        <p className='font-bold'>Price:$1500000</p>
+                        <p className='font-bold'>Price: ${player.price.toLocaleString()}</p>
                     <button className="btn">Choose Player</button>
                     </div>
                 </div>
