@@ -16,7 +16,8 @@ function App() {
  const [toggle, setToggle]=useState(true)
 
  const[availableBalance, setAvailableBalance] = useState(6000000000)
-
+ const [purchasePlayers,setPurchasePlayers] = useState([])
+ 
 
   return (
     <>
@@ -25,11 +26,13 @@ function App() {
 
 
      <div className=' max-w-[1200px] mx-auto flex justify-between items-center p-2'>
-      <h1 className='font-bold'>Available Players</h1>
+      <h1 className='font-bold'>{
+        toggle === true ? "Available Players" : `Selected Players (${purchasePlayers.length}/7)`
+        }</h1>
 
       <div className='font-bold'>
         <button onClick={() => setToggle(true)} className={`py-3 p-2 border-1 border-gray-400 rounded-l-xl border-r-0 ${toggle===true?" bg-[#E7FE25]":""}`}> Available</button>
-        <button onClick={()=> setToggle(false)} className={`py-3 p-2 border-1 border-gray-400 rounded-r-xl border-l-0 ${toggle===false?" bg-[#E7FE25]":""}`}> Selected <span>(0)</span></button>
+        <button onClick={()=> setToggle(false)} className={`py-3 p-2 border-1 border-gray-400 rounded-r-xl border-l-0 ${toggle===false?" bg-[#E7FE25]":""}`}> Selected <span>({purchasePlayers.length})</span></button>
       </div>
      </div>
 
@@ -38,8 +41,8 @@ function App() {
   toggle === true?
       
       <Suspense fallback={<span className="loading loading-ring loading-xl"></span>}>
-        <AvailablePlayers availableBalance={availableBalance} setAvailableBalance={setAvailableBalance} playerPromise={playerPromise}></AvailablePlayers>
-      </Suspense>: <SelectedPlayers></SelectedPlayers>
+        <AvailablePlayers purchasePlayers={purchasePlayers} setPurchasePlayers={setPurchasePlayers} availableBalance={availableBalance} setAvailableBalance={setAvailableBalance} playerPromise={playerPromise}></AvailablePlayers>
+      </Suspense>: <SelectedPlayers purchasePlayers={purchasePlayers}></SelectedPlayers>
 }
       
 
