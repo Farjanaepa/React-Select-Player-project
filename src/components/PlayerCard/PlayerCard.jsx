@@ -4,7 +4,18 @@ import flagImg from '../../assets/flag.png'
 
 const PlayerCard = ({ player,setAvailableBalance,availableBalance }) => {
 
-    const [isSelected,setSelected] = useState(false)
+    const [isSelected,setSelected] = useState(false);
+
+    const handleSelected = (playerData) => {
+        const playerPrice = parseInt(playerData.price.split('$').join(''))
+
+        if (availableBalance<playerPrice) {
+            alert('not enough coins!!')
+            return
+        }
+         setSelected(true)
+           setAvailableBalance(availableBalance - playerPrice);
+    }
 
     return (
          <div className="card bg-base-100  shadow-sm p-3 ">
@@ -38,11 +49,10 @@ const PlayerCard = ({ player,setAvailableBalance,availableBalance }) => {
                     </div>
                     
                     <div className="card-actions flex justify-between mt-3 items-center">
-                        <p className='font-bold'>Price: ${player.price.toLocaleString()}</p>
+                        <p className='font-bold'>Price: ${player.price}</p>
                     <button disabled={isSelected} onClick={()=>{
-                        setSelected(true)
-                        setAvailableBalance(500)
-                    }} className="btn">{isSelected === true ? "Selected" : "Choose player"}</button>
+                        handleSelected(player)
+                       }} className="btn">{isSelected === true ? "Selected" : "Choose player"}</button>
                     </div>
                 </div>
                     </div>
