@@ -18,6 +18,13 @@ function App() {
  const[availableBalance, setAvailableBalance] = useState(6000000000)
  const [purchasePlayers,setPurchasePlayers] = useState([])
  
+ const removePlayer = (p) =>{
+  const filterData = purchasePlayers.filter(ply => ply.player_name !== p.player_name)
+  console.log(filterData)
+  setPurchasePlayers(filterData)
+  setAvailableBalance(availableBalance+ parseInt(p.price.split('$').join('')))
+
+ }
 
   return (
     <>
@@ -42,7 +49,7 @@ function App() {
       
       <Suspense fallback={<span className="loading loading-ring loading-xl"></span>}>
         <AvailablePlayers purchasePlayers={purchasePlayers} setPurchasePlayers={setPurchasePlayers} availableBalance={availableBalance} setAvailableBalance={setAvailableBalance} playerPromise={playerPromise}></AvailablePlayers>
-      </Suspense>: <SelectedPlayers purchasePlayers={purchasePlayers}></SelectedPlayers>
+      </Suspense>: <SelectedPlayers removePlayer={removePlayer} purchasePlayers={purchasePlayers}></SelectedPlayers>
 }
       
 
