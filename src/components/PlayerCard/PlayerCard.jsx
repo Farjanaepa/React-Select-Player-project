@@ -14,9 +14,17 @@ const PlayerCard = ({ player,setAvailableBalance,availableBalance,setPurchasePla
             toast('not enough coins!!')
             return
         }
+        if (purchasePlayers.length===6) {
+            toast('6 players already selected')
+            return
+        }
          setSelected(true)
            setAvailableBalance(availableBalance - playerPrice);
            setPurchasePlayers([...purchasePlayers,playerData])
+     
+             toast('Purchase succesful!!')
+           
+          
     };
 
     return (

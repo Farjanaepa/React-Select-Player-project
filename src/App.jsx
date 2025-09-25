@@ -8,7 +8,7 @@ import { Suspense, useState } from 'react'
 
 
 const fetchPlayers = async () => {
-  const res = await fetch('/public/players.json')
+  const res = await fetch('/players.json')
   return res.json()
 }
  const playerPromise = fetchPlayers()
