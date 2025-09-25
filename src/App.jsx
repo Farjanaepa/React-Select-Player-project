@@ -1,6 +1,6 @@
 
 import './App.css'
-
+import { ToastContainer } from 'react-toastify';
 import AvailablePlayers from './components/AvailablePlayers/AvailablePlayers'
 import SelectedPlayers from './components/SelectedPlayers/SelectedPlayers'
 import Navbar from './components/Navbar/Navbar'
@@ -53,7 +53,7 @@ function App() {
 }
       
 
-      
+    <ToastContainer></ToastContainer>  
       
     </>
   );

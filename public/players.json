@@ -47,7 +47,7 @@
     "rating": 8.0,
     "batting_style": "Right Hand Bat",
     "bowling_style": "Right Arm Fast Medium",
-    "price": "$90000"
+    "price": "$90000000"
   },
   {
     "player_image": "https://i.ibb.co.com/jP3GpQwt/pexels-arsal-point-356971417-31131695.jpg",
@@ -57,6 +57,6 @@
     "rating": 8.7,
     "batting_style": "Left Hand Bat",
     "bowling_style": "Right Arm Offbreak",
-    "price": "$110000"
+    "price": "$1100000000000"
   }
 ]
